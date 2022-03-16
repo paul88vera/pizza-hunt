@@ -1,29 +1,6 @@
 const { Schema, model, Types } = require("mongoose");
 const dateFormat = require('../utils/dateFormat');
 
-const CommentSchema = new Schema({
-  writtenBy: {
-    type: String,
-  },
-  commentBody: {
-    type: String,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    get: createdAtVal => dateFormat(createdAtVal),
-  },
-  replies: [ReplySchema],
-  },
-  {
-    toJSON: {
-      virtuals: true,
-      getters: true,
-    },
-    id: false,
-  }
-);
-
 const ReplySchema = new Schema(
   {
     replyId: {
@@ -46,6 +23,29 @@ const ReplySchema = new Schema(
     toJSON: {
       getters: true,
     }
+  }
+);
+
+const CommentSchema = new Schema({
+  writtenBy: {
+    type: String,
+  },
+  commentBody: {
+    type: String,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    get: createdAtVal => dateFormat(createdAtVal),
+  },
+  replies: [ReplySchema],
+  },
+  {
+    toJSON: {
+      virtuals: true,
+      getters: true,
+    },
+    id: false,
   }
 );
 
