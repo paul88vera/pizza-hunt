@@ -1,4 +1,4 @@
-const { response } = require("express");
+// const { response } = require("express");
 
 const $pizzaList = document.querySelector('#pizza-list');
 
