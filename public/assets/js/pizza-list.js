@@ -29,7 +29,7 @@ const printPizza = ({ _id, pizzaName, toppings, size, commentCount, createdBy, c
               })
               .join('')}
           </ul>
-          <a class="btn display-block w-100 mt-auto" href="/pizza?id=${_id}">See the discussion.</a>
+          <a class="btn display-block w-100 mt-auto" href="/pizzas?id=${_id}">See the discussion.</a>
         </div>
       </div>
     </div>
