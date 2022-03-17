@@ -9,7 +9,7 @@ router.get('/add-pizza', (req, res) => {
   res.sendFile(path.join(__dirname, '../../public/add-pizza.html'));
 });
 
-router.get('/pizza', (req, res) => {
+router.get('/pizzas', (req, res) => {
   res.sendFile(path.join(__dirname, '../../public/pizza.html'));
 });
 
