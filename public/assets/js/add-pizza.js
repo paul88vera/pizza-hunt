@@ -1,5 +1,3 @@
-// const { response }  = require("express");
-
 const $addToppingBtn = document.querySelector('#add-topping');
 const $pizzaForm = document.querySelector('#pizza-form');
 const $customToppingsList = document.querySelector('#custom-toppings-list');
