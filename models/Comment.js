@@ -1,5 +1,5 @@
 const { Schema, model, Types } = require("mongoose");
-const dateFormat = require('../utils/dateFormat');
+const dateFormat = require("../utils/dateFormat");
 
 const ReplySchema = new Schema(
   {
@@ -10,40 +10,42 @@ const ReplySchema = new Schema(
     replyBody: {
       type: String,
       required: true,
+      trim: true,
     },
     writtenBy: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     createdAt: {
       type: Date,
       default: Date.now,
-      get: createdAtVal => dateFormat(createdAtVal),
-    }
+      get: (createdAtVal) => dateFormat(createdAtVal),
+    },
   },
   {
     toJSON: {
       getters: true,
-    }
+    },
   }
 );
 
-const CommentSchema = new Schema({
-  writtenBy: {
-    type: String,
-    required: true
-  },
-  commentBody: {
-    type: String,
-    required: true
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    get: createdAtVal => dateFormat(createdAtVal),
-  },
-  replies: [ReplySchema],
+const CommentSchema = new Schema(
+  {
+    writtenBy: {
+      type: String,
+      required: true,
+    },
+    commentBody: {
+      type: String,
+      required: true,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: (createdAtVal) => dateFormat(createdAtVal),
+    },
+    replies: [ReplySchema],
   },
   {
     toJSON: {
@@ -54,7 +56,7 @@ const CommentSchema = new Schema({
   }
 );
 
-CommentSchema.virtual('replyCount').get(function() {
+CommentSchema.virtual("replyCount").get(function () {
   return this.replies.length;
 });
 
